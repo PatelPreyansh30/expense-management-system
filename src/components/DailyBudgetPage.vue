@@ -3,8 +3,10 @@
     <h1>DailyBudgetPage</h1>
     <input type="date" v-model="date">
     <button type="submit" @click="submitDate">Show</button>
-    <Header />
-    <h1>DailyBudgetPage</h1>
+    <div class="date-deat">
+        <div class="date-detail-item">{{this.date}}</div>
+    </div>
+
 </template>
 <script>
 import Header from "./Header.vue";

@@ -10,12 +10,13 @@
         <div class="basket-item">Date 2</div>
         <div class="basket-item">Date 3</div>
     </div>
-    <h1>Basket Page</h1>
+    <AddItems />
 </template>
 
 <script>
 import Header from './Header.vue'
 import axios from 'axios'
+import AddItems from './AddItems.vue'
 
 export default {
     name: 'BasketPage',
@@ -42,6 +43,6 @@ export default {
     //     })
     // },
     name: "BasketPage",
-    components: { Header }
+    components: { Header, AddItems }
 }
 </script>

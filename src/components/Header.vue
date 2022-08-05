@@ -17,6 +17,7 @@
             <li>
                 <router-link to="/logout">Logout</router-link>
             </li>
+
         </ul>
     </div>
 </template>
@@ -29,16 +30,19 @@ export default {
 
 <style scoped>
 .header {
+    position: relative;
     display: flex;
-align-items: center;
-justify-content: center;
-background-color: #DFE0EA;
+    align-items: center;
+    justify-content: center;
+    background-color: #DFE0EA;
 }
+
 a {
     font-weight: bold;
     color: black;
     text-decoration: none;
 }
+
 .header i {
     display: none
 }
@@ -53,6 +57,6 @@ a {
     justify-items: center;
     padding: 10px;
     list-style: none;
-    
+
 }
 </style>

@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios"
 
 export default {
     name: 'AddItems',
@@ -31,11 +31,28 @@ export default {
         async saveBasket() {
             let res = await axios.post("http://172.20.10.13:8000/bucket/item/", {
                 "item": this.item,
-                "price": this.price
+                "price": this.price,
+                "user": `${localStorage.getItem('login-userid')}`
+            },{
+                headers:{
+                    "Authorization": `Token ${localStorage.getItem('login-token')}`
+                }
             })
             if (res.status == 201) {
                 console.log(res.data)
                 alert("Data Saved...")
+                let req = await axios.get("http://172.20.10.13:8000/bucket/item/",{
+                    headers:{
+                        "Authorization":`Token ${localStorage.getItem("login-token")}`
+                    }
+                })
+                this.getdata = [{
+                    "item":res.data.item,
+                    "item":res.data.price,
+                }]
+            }
+            else{
+                alert("Try Again...")
             }
         },
         async updateItem(){
@@ -46,6 +63,7 @@ export default {
         return {
             item: null,
             price: null,
+            getdata : []
         }
     },
 }

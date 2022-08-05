@@ -43,10 +43,12 @@ justify-content: center;
 background-color: #f8f9ff;
 }
 .box{
-  display: flex;
-  align-items: center;
-justify-content: center;
-  grid-area: main;
+  margin: auto;
+    width: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 
 }
 .box-item{
@@ -57,6 +59,7 @@ justify-content: center;
     margin: 12px;
     height: 150px;
     width: 150px;
+
   
 }
 

@@ -2,7 +2,7 @@
   <Header />
   <div class="container"></div>
   <div class="search">
-    <input type="text" placeholder="Search.." v-model="search" />
+    <input type="text" placeholder="Search.." v-model="item" />
     <i @click="searchQuery" class="bx bx-search"></i>
   </div>
   <div class="flex">
@@ -14,7 +14,7 @@
 
 <script>
 import Header from "./Header.vue";
-import axios from "axios";
+import axios from "axios"
 import AddItems from "./AddItems.vue";
 
 export default {
@@ -22,13 +22,13 @@ export default {
   data() {
     return {
       data: [],
-      search: null,
+      item: null,
       date : null
     };
   },
   methods: {
     searchQuery() {
-      console.log(this.search);
+        this.$router.push(`/search-result/${this.item}`)
     },
     showBucket(date){
         this.$router.push(`/bucket-view/${date}`)

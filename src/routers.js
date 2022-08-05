@@ -7,6 +7,7 @@ import Login from './components/Login.vue'
 import Logout from './components/Logout.vue'
 import Signup from './components/Signup.vue'
 import AddItems from './components/AddItems.vue'
+import SearchResult from './components/SearchResult.vue'
 
 const routes = [
     {
@@ -48,6 +49,11 @@ const routes = [
         name: 'AddItem',
         path: '/bucket-view/:date',
         component: AddItems,
+    },
+    {
+        name: 'SearchResult',
+        path: '/search-result/:data',
+        component: SearchResult,
     },
 ]
 

@@ -49,7 +49,6 @@ background-color: #f8f9ff;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-
 }
 .box-item{
   background-color: #DFE0EA;
@@ -59,8 +58,7 @@ background-color: #f8f9ff;
     margin: 12px;
     height: 150px;
     width: 150px;
-
-  
+    cursor: pointer;
 }
 
   a{
@@ -70,6 +68,5 @@ background-color: #f8f9ff;
     margin: 12px;
     height: 30px;
     width: 120px;
-
   }
 </style>

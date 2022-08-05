@@ -28,18 +28,31 @@ export default {
 </script>
 
 <style scoped>
+.header {
+    display: flex;
+align-items: center;
+justify-content: center;
+background-color: #DFE0EA;
+}
+a {
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
 .header i {
-    display: none;
+    display: none
 }
 
 .header ul {
     display: flex;
-    /* text-decoration: none; */
+    margin: 0;
 }
 
 .header ul li {
     text-decoration: none;
     justify-items: center;
     padding: 10px;
+    list-style: none;
+    
 }
 </style>

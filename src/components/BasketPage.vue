@@ -30,17 +30,17 @@ export default {
             console.log(this.search);
         }
     },
-    async mounted() {
-        let res = await axios.post(`http://172.20.10.13:8000/bucket/item/`, {
-            'item':'XYZ',
-            'price':50,
-            'user':`${localStorage.getItem('login-userid')}`
-        }, {
-            headers: {
-                'Authorization': `Token ${localStorage.getItem('login-token')}`
-            }
-        })
-    },
+    // async mounted() {
+    //     let res = await axios.post(`http://172.20.10.13:8000/bucket/item/`, {
+    //         'item':'XYZ',
+    //         'price':50,
+    //         'user':`${localStorage.getItem('login-userid')}`
+    //     }, {
+    //         headers: {
+    //             'Authorization': `Token ${localStorage.getItem('login-token')}`
+    //         }
+    //     })
+    // },
     name: "BasketPage",
     components: { Header }
 }

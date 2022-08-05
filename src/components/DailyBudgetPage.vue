@@ -1,11 +1,24 @@
 <template>
     <Header />
     <h1>DailyBudgetPage</h1>
+    <input type="date" v-model="date">
+    <button type="submit"  @click="submitDate">Show</button>
+
 </template>
 <script>
 import Header from './Header.vue';
 export default {
     name: "DailyBudgetPage",
-    components: { Header }
+    components: { Header },
+    data(){
+        return {
+            date: null
+        }
+    },
+    methods:{
+        submitDate(){
+            console.log(this.date)
+        }
+    }
 }
 </script>

@@ -1,24 +1,18 @@
 <template>
-  <h1>Login Page</h1>
-  <div>
-    <input
-      required
-      type="text"
-      placeholder="Enter Username"
-      v-model="username"
-    />
-    <br /><br />
-    <input
-      required
-      type="password"
-      placeholder="Enter Password"
-      v-model="password"
-    />
-    <br /><br />
-    <button @click="userlogin">Login</button>
-  </div>
-  <br /><br />
-  <router-link to="/signup">Not our user ? Sign Up</router-link>
+  <center>
+    <h1>Login Page</h1>
+    <div class="login">
+      <input required type="text" placeholder="Enter Username" v-model="username" />
+      <br /><br />
+      <input required type="password" placeholder="Enter Password" v-model="password" />
+      <br /><br />
+      <button @click="userlogin">Login</button>
+    </div>
+    <div class="register">
+      <router-link to="/signup">Not our user ? Sign Up</router-link>
+    </div>
+  </center>
+
 </template>
 
 <script>
@@ -33,7 +27,7 @@ export default {
     };
   },
   methods: {
-    async loginAPI() {},
+    async loginAPI() { },
     async userlogin() {
       let res = await axios.post("http://172.20.10.13:8000/user/login/", {
         password: this.password,
@@ -62,3 +56,33 @@ export default {
   },
 };
 </script>
+<style scoped>
+center {
+  margin-top: 10rem;
+}
+center h1{
+  margin-bottom: 50px;
+}
+ .login input{
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+.login button{
+   background-color: blue;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width:30%;
+  border-radius: 15px;
+}
+.register{
+  margin-top: 30px;
+}
+.register a {
+  
+  text-decoration: none;
+}
+</style>

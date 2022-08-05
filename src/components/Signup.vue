@@ -1,6 +1,9 @@
 <template>
+<center>
+
   <h1>SignUp Page</h1>
-  <div>
+  <div class="signup">
+
     <input
       required
       type="text"
@@ -20,7 +23,11 @@
     <button @click="userSignup">Sign Up</button>
   </div>
   <br /><br />
-  <router-link to="/login">Already registered ? Login Now</router-link>
+  <div class="login">
+    <router-link to="/login">Already registered ? Login Now</router-link>
+
+  </div>
+</center>
 </template>
 
 <script>
@@ -61,3 +68,33 @@ export default {
   },
 };
 </script>
+<style scoped>
+center {
+  margin-top: 10rem;
+}
+center h1{
+  margin-bottom: 50px;
+}
+ .signup input{
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+.signup button{
+   background-color: blue;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 30%;
+  border-radius: 15px;
+}
+.login{
+  margin-top: 30px;
+}
+.login a {
+  
+  text-decoration: none;
+}
+</style>

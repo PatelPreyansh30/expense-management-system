@@ -14,7 +14,7 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 
 export default {
     name: 'Signup',
@@ -23,6 +23,19 @@ export default {
             username: null,
             email: null,
             password: null,
+        }
+    },
+    methods:{
+        async userSignup(){
+            let res = await axios.post("http://172.20.10.13:8000/user/register/",{
+                "email":this.email,
+                "password":this.password,
+                "username":this.username
+            })
+
+            if (res.status==201){
+                alert("Sign up successfully")
+            }
         }
     }
 }

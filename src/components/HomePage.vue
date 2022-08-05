@@ -23,14 +23,14 @@ import axios from "axios";
 export default {
   name: "HomePage",
   components: { Header },
-  mounted() {
-    let token = localStorage.getItem("login-token");
-    if (!token) {
-      this.$router.push("/login");
-    } else {
-      this.$router.push("/home");
-    }
-  },
+  // mounted() {
+  //   let token = localStorage.getItem("login-token");
+  //   if (!token) {
+  //     this.$router.push("/login");
+  //   } else {
+  //     this.$router.push("/home");
+  //   }
+  // },
 };
 </script>
 <style scoped>

@@ -8,21 +8,6 @@
     <br />
     <button @click="saveAdd" type="submit">Save</button>
   </div>
-  <Header />
-  <div class="salary">
-    <div class="salary-item">
-      <label>Enter your monthly salary</label> <br />
-      <br />
-    </div>
-    <div class="salary-item">
-      <input type="text" placeholder="Enter your salary" v-model="salary" />
-      <br />
-      <br />
-    </div>
-    <div class="salary-item">
-      <button @click="saveAdd" type="submit">Save</button>
-    </div>
-  </div>
 </template>
 <script>
 import Header from "./Header.vue";
@@ -60,12 +45,6 @@ export default {
   components: {
     Header,
   },
-  methods: {
-    saveAdd() {
-      console.log("saved");
-    },
-  },
-  components: { Header },
 };
 </script>
 

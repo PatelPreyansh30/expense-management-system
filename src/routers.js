@@ -6,6 +6,7 @@ import BasketPage from './components/BasketPage.vue'
 import Login from './components/Login.vue'
 import Logout from './components/Logout.vue'
 import Signup from './components/Signup.vue'
+import AddItems from './components/AddItems.vue'
 
 const routes = [
     {
@@ -42,6 +43,11 @@ const routes = [
         name: 'Logout',
         path: '/logout',
         component: Logout,
+    },
+    {
+        name: 'AddItem',
+        path: '/bucket-view/:date',
+        component: AddItems,
     },
 ]
 

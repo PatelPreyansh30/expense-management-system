@@ -1,91 +1,101 @@
 <template>
-<div class="calender">
+  <div class="calender">
     <h2>calender here</h2>
-    <div class="month">      
-  <ul>
-    <li class="prev">&#10094;</li>
-    <li class="next">&#10095;</li>
-    <li>
-      August<br>
-      <span style="font-size:18px">2021</span>
-    </li>
-  </ul>
-</div>
-<ul class="weekdays">
-  <li>Mo</li>
-  <li>Tu</li>
-  <li>We</li>
-  <li>Th</li>
-  <li>Fr</li>
-  <li>Sa</li>
-  <li>Su</li>
-</ul>
+    <div class="month">
+      <ul>
+        <li class="prev">&#10094;</li>
+        <li class="next">&#10095;</li>
+        <li>
+          August<br />
+          <span style="font-size: 18px">2021</span>
+        </li>
+      </ul>
+    </div>
+    <ul class="weekdays">
+      <li>Mo</li>
+      <li>Tu</li>
+      <li>We</li>
+      <li>Th</li>
+      <li>Fr</li>
+      <li>Sa</li>
+      <li>Su</li>
+    </ul>
 
-<ul class="days">  
-  <li>1</li>
-  <li>2</li>
-  <li>3</li>
-  <li>4</li>
-  <li>5</li>
-  <li>6</li>
-  <li>7</li>
-  <li>8</li>
-  <li>9</li>
-  <li><span class="active">10</span></li>
-  <li>11</li>
-  <li>12</li>
-  <li>13</li>
-  <li>14</li>
-  <li>15</li>
-  <li>16</li>
-  <li>17</li>
-  <li>18</li>
-  <li>19</li>
-  <li>20</li>
-  <li>21</li>
-  <li>22</li>
-  <li>23</li>
-  <li>24</li>
-  <li>25</li>
-  <li>26</li>
-  <li>27</li>
-  <li>28</li>
-  <li>29</li>
-  <li>30</li>
-  <li>31</li>
-</ul>
-
-</div>
-<div class="date-detail">
+    <ul class="days">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li><span class="active">10</span></li>
+      <li>11</li>
+      <li>12</li>
+      <li>13</li>
+      <li>14</li>
+      <li>15</li>
+      <li>16</li>
+      <li>17</li>
+      <li>18</li>
+      <li>19</li>
+      <li>20</li>
+      <li>21</li>
+      <li>22</li>
+      <li>23</li>
+      <li>24</li>
+      <li>25</li>
+      <li>26</li>
+      <li>27</li>
+      <li>28</li>
+      <li>29</li>
+      <li>30</li>
+      <li>31</li>
+    </ul>
+  </div>
+  <div class="date-detail">
     <div class="date-detail-item">
-        <h3>Today's date</h3>
+      <h3>Today's date</h3>
     </div>
     <div class="date-detail-item">
-        <h3>Budget</h3>
+      <h3>Budget</h3>
     </div>
     <div class="date-detail-item">
-        <h3>Savings</h3>
+      <h3>Savings</h3>
     </div>
     <div class="date-detail-item">
-        <h3>Expence</h3>
+      <h3>Expence</h3>
     </div>
 
     <div class="date-daily-footer">
-        <h3>Net amount: </h3>
+      <h3>Net amount:</h3>
     </div>
-</div>
+  </div>
+  <Header />
+  <h1>DailyBudgetPage</h1>
 </template>
 <script>
+import Header from "./Header.vue";
 export default {
-    name: 'DailyBudgetPage',
-    
-}
+  name: "DailyBudgetPage",
+  components: {
+    Header,
+  },
+};
 </script>
 
 <style scoped>
-* {box-sizing: border-box;}
-ul {list-style-type: none;}
-body {font-family: Verdana, sans-serif;}
+* {
+  box-sizing: border-box;
+}
+ul {
+  list-style-type: none;
+}
+body {
+  font-family: Verdana, sans-serif;
+}
 
 .month {
   padding: 7px 25px;
@@ -141,27 +151,38 @@ body {font-family: Verdana, sans-serif;}
   width: 13.6%;
   text-align: center;
   margin-bottom: 5px;
-  font-size:12px;
+  font-size: 12px;
   color: #777;
 }
 
 .days li .active {
   padding: 5px;
   background: #1abc9c;
-  color: white !important
+  color: white !important;
 }
 
 /* Add media queries for smaller screens */
-@media screen and (max-width:720px) {
-  .weekdays li, .days li {width: 13.1%;}
+@media screen and (max-width: 720px) {
+  .weekdays li,
+  .days li {
+    width: 13.1%;
+  }
 }
 
 @media screen and (max-width: 420px) {
-  .weekdays li, .days li {width: 12.5%;}
-  .days li .active {padding: 2px;}
+  .weekdays li,
+  .days li {
+    width: 12.5%;
+  }
+  .days li .active {
+    padding: 2px;
+  }
 }
 
 @media screen and (max-width: 290px) {
-  .weekdays li, .days li {width: 12.2%;}
+  .weekdays li,
+  .days li {
+    width: 12.2%;
+  }
 }
 </style>

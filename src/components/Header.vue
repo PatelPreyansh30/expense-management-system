@@ -3,16 +3,19 @@
         <i class='bx bx-menu'></i>
         <ul>
             <li>
-                <router-link to="/">Home</router-link>
+                <router-link to="/home">Home</router-link>
             </li>
             <li>
-                <router-link to="/save-page">Save</router-link>
+                <router-link to="/save">Save</router-link>
             </li>
             <li>
-                <router-link to="/daily-budget-page">Daily Budget</router-link>
+                <router-link to="/daily-budget">Daily Budget</router-link>
             </li>
             <li>
-                <router-link to="/basket-page">Basket</router-link>
+                <router-link to="/basket">Basket</router-link>
+            </li>
+            <li>
+                <router-link to="/logout">Logout</router-link>
             </li>
         </ul>
     </div>
@@ -25,14 +28,16 @@ export default {
 </script>
 
 <style scoped>
-.header i{
- display: none;
+.header i {
+    display: none;
 }
-.header ul{
+
+.header ul {
     display: flex;
     /* text-decoration: none; */
 }
-.header ul li{
+
+.header ul li {
     text-decoration: none;
     justify-items: center;
     padding: 10px;

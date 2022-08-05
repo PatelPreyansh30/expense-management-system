@@ -1,4 +1,6 @@
 <template>
+    <Header />
+    
 <div class="search">
     <input type="text" placeholder="Search.." v-model="search">
     <i @click="searchQuery"  class='bx bx-search'></i>
@@ -8,7 +10,6 @@
     <div class="basket-item">Date 2</div>
     <div class="basket-item">Date 3</div>
 </div>
-    <Header />
     <h1>Basket Page</h1>
 </template>
 

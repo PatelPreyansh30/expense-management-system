@@ -1,20 +1,28 @@
 <template>
-    <Header />
-    <div class="home-page">
-        <div class="box">
-            <router-link to="/save">Save</router-link>
-            <router-link to="/daily-budget">Daily Budget</router-link>
-            <router-link to="/basket">Basket</router-link>
-        </div>
+  <Header />
+  <div class="home-page">
+    <div class="box">
+      <router-link to="/save">Save</router-link>
+      <router-link to="/daily-budget">Daily Budget</router-link>
+      <router-link to="/basket">Basket</router-link>
     </div>
+  </div>
 </template>
 
 <script>
-import Header from './Header.vue';
-// import axios from 'axios'
+import Header from "./Header.vue";
+import axios from "axios";
 
 export default {
-    name: "HomePage",
-    components: { Header }
-}
+  name: "HomePage",
+  components: { Header },
+  mounted() {
+    let token = localStorage.getItem("login-token");
+    if (!token) {
+      this.$router.push("/login");
+    } else {
+      this.$router.push("/home");
+    }
+  },
+};
 </script>

@@ -8,6 +8,7 @@ import Logout from './components/Logout.vue'
 import Signup from './components/Signup.vue'
 import AddItems from './components/AddItems.vue'
 import SearchResult from './components/SearchResult.vue'
+import UpdateSalary from './components/UpdateSalary.vue'
 
 const routes = [
     {
@@ -54,6 +55,11 @@ const routes = [
         name: 'SearchResult',
         path: '/search-result/:data',
         component: SearchResult,
+    },
+    {
+        name: 'UpdateSalary',
+        path: '/update-salary/:id/:salary',
+        component: UpdateSalary,
     },
 ]
 

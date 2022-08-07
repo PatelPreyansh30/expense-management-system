@@ -1,13 +1,18 @@
 <template>
   <Header />
-  <div>
-    <label>Enter your monthly salary</label> <br />
+  <center>
+    <label for="salary">Enter your monthly salary</label>
     <br />
-    <input type="text" placeholder="Enter your salary" v-model="salary" />
-    <br />
+    <input
+      required
+      id="salary"
+      type="text"
+      placeholder="Enter your salary"
+      v-model="salary"
+    />
     <br />
     <button @click="saveAdd" type="submit">Save</button>
-  </div>
+  </center>
 </template>
 <script>
 import Header from "./Header.vue";
@@ -42,6 +47,22 @@ export default {
       }
     },
   },
+  async mounted(){
+    try{
+      let res = await axios.get("http://172.20.10.13:8000/user/userdata/",{
+        headers:{
+          Authorization:`Token ${localStorage.getItem('login-token')}`
+        }
+      })
+      // console.log(res)
+      if(res.status==200){
+        this.$router.push(`/update-salary/${res.data[0].id}/${res.data[0].salary}`)
+      }
+    }
+    catch(e){
+      console.log(e)
+    }
+  },
   components: {
     Header,
   },
@@ -49,19 +70,17 @@ export default {
 </script>
 
 <style scoped>
-.salary {
-  display: flex;
-  margin: auto;
-  width: 250px;
-  padding-top: 150px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  flex-direction: column;
+center {
+  margin-top: 2rem;
 }
-.salary-item label {
-  border-left: 2px solid black;
-  display: inline-block;
-  padding-left: 5px;
+label,
+input,
+button {
+  margin: 10px;
+  font-size: 20px;
+}
+label {
+  border-left: 2px solid;
+  padding: 5px;
 }
 </style>

@@ -19,10 +19,9 @@
       placeholder="Enter Password"
       v-model="password"
     />
-    <br /><br />
+    <br />
     <button @click="userSignup">Sign Up</button>
   </div>
-  <br /><br />
   <div class="login">
     <router-link to="/login">Already registered ? Login Now</router-link>
 
@@ -44,17 +43,31 @@ export default {
   },
   methods: {
     async userSignup() {
-      let res = await axios.post("http://172.20.10.13:8000/user/register/", {
-        email: this.email,
-        password: this.password,
-        username: this.username,
-      });
-
-      if (res.status == 201) {
-        alert("Sign up successfully");
-        this.$router.push("/login");
-      } else {
-        this.$router.push("/signup");
+      try{
+        let res = await axios.post("http://172.20.10.13:8000/user/register/", {
+          email: this.email,
+          password: this.password,
+          username: this.username,
+        });
+  
+        if (res.status == 201) {
+          alert("Sign up successfully");
+          this.$router.push("/login");
+        } else {
+          this.$router.push("/signup");
+        }
+      }
+      catch(e){
+        let err = e.response.data
+        if(err.username){
+          alert(err.username)
+        }
+        else if(err.email){
+          alert(err.email)
+        }
+        else if(err.password){
+          alert(err.password)
+        }
       }
     },
   },
@@ -70,7 +83,7 @@ export default {
 </script>
 <style scoped>
 center {
-  margin-top: 10rem;
+  margin-top: 3rem;
 }
 center h1{
   margin-bottom: 50px;

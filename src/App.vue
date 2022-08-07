@@ -7,14 +7,14 @@ import axios from "axios";
 
 export default {
   name: "App",
-  // mounted() {
-  //   let token = localStorage.getItem("login-token");
-  //   if (token) {
-  //     this.$router.push("/home");
-  //   } else {
-  //     this.$router.push("/login");
-  //   }
-  // },
+  mounted() {
+    let token = localStorage.getItem("login-token");
+    if (token) {
+      this.$router.push("/home");
+    } else {
+      this.$router.push("/login");
+    }
+  },
 };
 </script>
 

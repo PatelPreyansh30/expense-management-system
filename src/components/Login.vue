@@ -29,20 +29,26 @@ export default {
   methods: {
     async loginAPI() { },
     async userlogin() {
-      let res = await axios.post("http://172.20.10.13:8000/user/login/", {
-        password: this.password,
-        username: this.username,
-      });
-
-      if (res.status == 200) {
-        alert("Login successfully");
-        localStorage.setItem("login-token", res.data.token);
-        localStorage.setItem("login-userid", res.data.user_id);
-        // localStorage.setItem('login-email',res.data.email)
-        localStorage.setItem("login-username", res.data.username);
-        this.$router.push("/home");
-      } else {
-        this.$router.push("/login");
+      try{
+        let res = await axios.post("http://172.20.10.13:8000/user/login/", {
+          password: this.password,
+          username: this.username,
+        });
+  
+        if (res.status == 200) {
+          alert("Login successfully");
+          localStorage.setItem("login-token", res.data.token);
+          localStorage.setItem("login-userid", res.data.user_id);
+          // localStorage.setItem('login-email',res.data.email)
+          localStorage.setItem("login-username", res.data.username);
+          this.$router.push("/home");
+        } else {
+          this.$router.push("/login");
+        }
+      }
+      catch(e){
+        console.log(e)
+        alert(e.response.data.non_field_errors)
       }
     },
   },
@@ -58,7 +64,7 @@ export default {
 </script>
 <style scoped>
 center {
-  margin-top: 10rem;
+  margin-top: 3rem;
 }
 center h1{
   margin-bottom: 50px;

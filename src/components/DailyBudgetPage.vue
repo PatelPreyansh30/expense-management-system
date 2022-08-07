@@ -1,87 +1,128 @@
 <template>
-    <Header />
-    <!-- <h1>DailyBudgetPage</h1> -->
-    <div class="date-box">
-        <div class="date-box-item">
+  <Header />
+  <center class="date-box">
+    <label>Search Date</label>
+    <br />
+    <input required type="date" id="dateinput" v-model="date" />
+    <br />
+    <button type="submit" @click="submitDate">Show</button>
+  </center>
 
-            <label>Enter Date</label> <br>
-        </div>
-        <div class="date-box-item">
-            <input type="date" v-model="date"><br> <br>
-
-        </div>
-        <div class="date-box-item">
-            <button type="submit" @click="submitDate">Show</button>
-
-        </div>
-
+  <!-- <div class="forloop"> -->
+  <div class="date-detail">
+    <div class="date-detail-item">
+      <lable>Today's Date</lable>
+      <h6>{{ data.date }}</h6>
     </div>
-    <div class="date-detail">
-        <div class="date-detail-item"> 
-            <lable >Today's Date</lable> 
-            <h6>Aug 4 2022</h6>
-        </div>
-        <div class="date-detail-item">
-            <lable>Budget</lable>
-            <h6>$ 800</h6>
-        </div>
-        <div class="date-detail-item">
-            <lable>Savings</lable>
-            <h6>$ 100</h6>
-        </div>
-        <div class="date-detail-item">
-           <lable>Expence</lable> 
-            <h6>$ 500</h6>
-        </div>
+    <div class="date-detail-item">
+      <lable>Budget</lable>
+      <h6><i class="bx bx-rupee"></i>{{ data.budget }}</h6>
     </div>
-    <center>
-        <div class="nt">Net amount:
-            <h6>$ 300</h6>
-        </div>
-    </center>
+    <div class="date-detail-item">
+      <lable>Savings</lable>
+      <h6><i class="bx bx-rupee"></i>{{ data.savings }}</h6>
+    </div>
+    <div class="date-detail-item">
+      <lable>Expence</lable>
+      <h6><i class="bx bx-rupee"></i>{{ data.expanse }}</h6>
+    </div>
+  </div>
 
+  <center class="net-amount">
+    Net amount:
+    <h6><i class="bx bx-rupee"></i>{{ data.net_amount }}</h6>
+  </center>
 </template>
 <script>
 import Header from "./Header.vue";
+import axios from "axios";
+
 export default {
-    name: "DailyBudgetPage",
-    components: { Header },
-    data() {
-        return {
-            date: null
+  name: "DailyBudgetPage",
+  components: { Header },
+  data() {
+    return {
+      date: null,
+      data: [],
+    };
+  },
+  methods: {
+    async submitDate() {
+      try {
+        let res = await axios.get(
+          `http://172.20.10.13:8000/bucket/dashboard/${this.date}`,
+          {
+            headers: {
+              Authorization: `Token ${localStorage.getItem("login-token")}`,
+            },
+          }
+        );
+        if (res.data.date == null) {
+          alert("This Date Record Not Found!");
+        } else {
+          this.data = res.data;
         }
-    },
-    methods: {
-        submitDate() {
-            console.log(this.date)
+      } catch (e) {
+        console.log(e);
+        if (e.response.status == 501) {
+          alert("First Enter Your Salary");
+          this.$router.push("/save");
         }
+      }
     },
-    name: "DailyBudgetPage",
-    components: {
-        Header,
-    },
+  },
+  async mounted() {
+    let today = new Date().toISOString().slice(0, 10);
+    try {
+      let res = await axios.get(
+        `http://172.20.10.13:8000/bucket/dashboard/${today}`,
+        {
+          headers: {
+            Authorization: `Token ${localStorage.getItem("login-token")}`,
+          },
+        }
+      );
+      this.data = res.data;
+    } catch (e) {
+      if (e.response.status == 501) {
+        alert("First Add Your Salary...");
+        this.$router.push("/save");
+      }
+    }
+  },
 };
 </script>
 <style scoped>
-.date-box {
-    margin: auto;
-    width: 125px;
-    padding-top: 70px;
+center {
+  margin-top: 2rem;
 }
-
+label,
+input,
+button {
+  margin: 10px;
+  font-size: 20px;
+}
+label {
+  border-left: 2px solid;
+  padding: 5px;
+}
 .date-detail {
-    display: flex;
-    flex-flow: row wrap;
-    padding-top: 75px;
-    margin-left: 12px;
+  margin: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
 }
-
 .date-detail-item {
-    flex: 25%;
-    margin:10px;
+  font-size: 20px;
+  margin: 10px;
+  width: 130px;
+  height: 58px;
+  text-align: center;
 }
-.date-detail-item lable {
-    padding-left: 5px;
-    border-left: 2px solid black;
+.net-amount {
+  font-size: 20px;
+  margin: 1.5rem;
 }
 </style>
